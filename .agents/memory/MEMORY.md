@@ -1,0 +1,1 @@
+- [RTL viewport overflow](rtl-viewport-overflow.md) — decorative off-grid elements can shift the entire RTL page in the Replit preview even when the grid itself is responsive.

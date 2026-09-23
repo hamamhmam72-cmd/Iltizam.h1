@@ -31,4 +31,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
 
+app.use((error: unknown, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  req.log?.error({ err: error }, "API request failed");
+  if (res.headersSent) return;
+  res.status(503).json({ error: "The database or API service is temporarily unavailable. Please try again later." });
+});
+
 export default app;

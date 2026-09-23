@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "التزام"
+description = "موقع عربي لإدارة طلبات النقل والتوصيل، تشغيل الكباتن، ومتابعة العمولات والتسويات المالية."
+version = "1.0.0"
+id = "artifacts/eltizam"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22504
+
+[services.development]
+run = "pnpm --filter @workspace/eltizam run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/eltizam", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/eltizam/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22504"
+BASE_PATH = "/"

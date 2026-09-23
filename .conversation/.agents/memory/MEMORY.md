@@ -1,0 +1,1 @@
+- [Generated client DOM iterable](generated-client-dom-iterable.md) — include `dom.iterable` when generated API clients use `Headers.entries()`.

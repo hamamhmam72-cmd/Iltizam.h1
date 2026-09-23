@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "4sWbHSlp1yh1dOW9yk0sv"
+uri = "file://eltizam-project.zip"
+type = "unspecified"
+title = "مشروع التزام — ملف مضغوط"
+description = "نسخة المصدر الكاملة لتطبيق التزام، وتشمل الواجهة، خادم API، مخطط قاعدة البيانات، عقود OpenAPI، وملفات الإعداد اللازمة للتشغيل."
+logical_id = "46d99a06-16c2-4484-ba96-6ceeb6484a70"
+content_hash = "sha256:05f840b7cae41e377dc0adb1a67add5e7fdf39178c3f1779156ae1870b19546e"
+size = 265923
+mtime_ms = 1790110850980
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:6162913b-410c-484a-9ddf-1cca235067c5/46d99a06-16c2-4484-ba96-6ceeb6484a70/b42de16f-fc92-4b0d-bf14-226fcc52e3c7"
+storage_version_token = "1790110860460537"
+content_type = "application/octet-stream"
