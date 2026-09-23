@@ -1,14 +1,16 @@
 import express, { type Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
-import pinoHttp from "pino-http";
+import * as pinoHttpModule from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
+// الحل الذري لجعل حزمة pino-http قابلة للاستدعاء والتوافق مع TypeScript
+const pinoHttp = (pinoHttpModule as any).default || pinoHttpModule;
+
 const app: Express = express();
 
-// استخدام (pinoHttp as any) للتخلص نهائياً من خطأ TS2349 و TS7006 للأنواع الضمنية
 app.use(
-  (pinoHttp as any)({
+  pinoHttp({
     logger,
     serializers: {
       req(req: any) {
