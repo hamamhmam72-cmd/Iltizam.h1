@@ -14,6 +14,8 @@
     }
   ],
   "compilerOptions": {
+    "noEmitOnError": false,
+    "skipLibCheck": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
