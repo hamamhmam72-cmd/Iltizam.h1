@@ -12,9 +12,7 @@
     {
       "path": "./lib/api-zod"
     }
-  ]
-}
-{
+  ],
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
