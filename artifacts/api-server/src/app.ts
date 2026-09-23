@@ -6,18 +6,19 @@ import { logger } from "./lib/logger";
 
 const app: Express = express();
 
+// استخدام (pinoHttp as any) للتخلص نهائياً من خطأ TS2349 و TS7006 للأنواع الضمنية
 app.use(
-  pinoHttp({
+  (pinoHttp as any)({
     logger,
     serializers: {
-      req(req: Request) {
+      req(req: any) {
         return {
           id: req.id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-      res(res: Response) {
+      res(res: any) {
         return {
           statusCode: res.statusCode,
         };
