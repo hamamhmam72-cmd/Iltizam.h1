@@ -1,3 +1,16 @@
+import express from "express";
+import pinoHttp from "pino-http";
+
+const app = express();
+
+app.use(pinoHttp());
+
+app.get("/", (req, res) => {
+  res.json({ message: "Server is running" });
+});
+
+export default app;
+
 import express, { type Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import * as pinoHttpModule from "pino-http";
