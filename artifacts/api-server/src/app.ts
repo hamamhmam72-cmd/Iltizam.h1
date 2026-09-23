@@ -1,4 +1,4 @@
-import express, { type Express } from "express";
+import express, { type Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import router from "./routes";
@@ -10,28 +10,29 @@ app.use(
   pinoHttp({
     logger,
     serializers: {
-      req(req) {
+      req(req: Request) {
         return {
           id: req.id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-      res(res) {
+      res(res: Response) {
         return {
           statusCode: res.statusCode,
         };
       },
     },
-  }),
+  })
 );
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
 
-app.use((error: unknown, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+app.use((error: unknown, req: Request, res: Response, _next: NextFunction) => {
   req.log?.error({ err: error }, "API request failed");
   if (res.headersSent) return;
   res.status(503).json({ error: "The database or API service is temporarily unavailable. Please try again later." });
